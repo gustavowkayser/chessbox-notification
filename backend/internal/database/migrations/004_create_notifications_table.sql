@@ -5,5 +5,5 @@ CREATE TABLE IF NOT EXISTS notifications (
 	message VARCHAR(255) NOT NULL,
 	data JSONB,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	tournament_id UUID REFERENCES tournaments(id),
+	tournament_id UUID REFERENCES tournaments(id)
 );

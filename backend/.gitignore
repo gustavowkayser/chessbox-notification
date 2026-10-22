@@ -1,1 +1,13 @@
 .secrets/
+bin/
+build/
+*.zip
+*.log
+.env
+
+# Terraform
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+terraform/*.tfstate
+terraform/*.tfstate.*
+terraform/terraform.tfvars

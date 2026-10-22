@@ -1,8 +1,8 @@
 package notification
 
 import (
-	"chess-notify/internal/middleware"
-	"chess-notify/internal/utils"
+	"chessbox-notification/internal/middleware"
+	"chessbox-notification/internal/utils"
 	"net/http"
 )
 

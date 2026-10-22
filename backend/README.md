@@ -1,6 +1,6 @@
-# Chess Notify - Backend
+# Chessbox Notification - Backend
 
-The backend service for **Chess Notify** is a high-performance Go application responsible for tracking chess tournaments on [chess-results.com](https://chess-results.com), detecting new round pairings in real-time, and dispatching push notifications to registered mobile devices.
+The backend service for **Chessbox Notification** is a high-performance Go application responsible for tracking chess tournaments on [chess-results.com](https://chess-results.com), detecting new round pairings in real-time, and dispatching push notifications to registered mobile devices.
 
 ---
 
@@ -175,9 +175,52 @@ The server starts, executes any pending database migrations, starts the cron sch
 ### 3. Build Binary
 
 ```bash
-go build -o chess-notify-server cmd/main.go
-./chess-notify-server
+make build-local
+./bin/chessbox-notification
 ```
+
+---
+
+## Serverless Deployment (AWS Lambda & Terraform)
+
+The backend can be built and deployed completely serverless on AWS using AWS Lambda (on ARM64 / Graviton), API Gateway HTTP API (v2), Amazon EventBridge, and an external PostgreSQL database provider (e.g. Neon, Supabase, Railway, CockroachDB).
+
+### Architecture
+
+- **API Lambda**: Interfaced via API Gateway HTTP API (`$default` catch-all route with `httpadapter.NewV2`). Runs with `APP_MODE=api`.
+- **Worker Lambda**: Triggered periodically via Amazon EventBridge (`rate(1 minute)`). Scrapes tournaments from `chess-results.com` and dispatches push notifications to mobile devices. Runs with `APP_MODE=worker`.
+- **External Database Integration**: The Lambda functions connect directly over TLS to your external PostgreSQL database (e.g. Neon, Supabase). Because the database is managed externally, there is no need for VPC, RDS, or NAT Gateway provisioning—yielding zero idle AWS infrastructure costs and ultra-low cold-start latency.
+- **Embedded Migrations**: SQL migrations are embedded directly into the Go binary via `embed.FS` and executed safely on database connection.
+
+### 1. Build Lambda Package
+
+```bash
+make build
+```
+
+This compiles a static Linux binary (`bootstrap`) targeted for `arm64` and packages it into `build/bootstrap.zip`.
+
+### 2. Configure Terraform
+
+```bash
+cd terraform
+cp terraform.tfvars.example terraform.tfvars
+```
+
+Set your external `database_url` in `terraform.tfvars`:
+```hcl
+database_url = "postgres://user:password@ep-sample-12345.us-east-1.aws.neon.tech/neondb?sslmode=require"
+```
+
+### 3. Deploy Infrastructure
+
+```bash
+make tf-init
+make tf-plan
+make tf-apply
+```
+
+Terraform outputs the public `api_endpoint` for your mobile app and the Lambda function names.
 
 ---
 

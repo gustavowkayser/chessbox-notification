@@ -1,7 +1,7 @@
 package tournament
 
 import (
-	"chess-notify/internal/utils"
+	"chessbox-notification/internal/utils"
 	"fmt"
 	"net/http"
 )
