@@ -1,7 +1,7 @@
 package main
 
 import (
-	"chess-notify/internal/application"
+	"chessbox-notification/internal/application"
 	"log"
 )
 

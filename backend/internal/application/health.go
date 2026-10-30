@@ -1,7 +1,7 @@
 package application
 
 import (
-	"chess-notify/internal/utils"
+	"chessbox-notification/internal/utils"
 	"net/http"
 )
 

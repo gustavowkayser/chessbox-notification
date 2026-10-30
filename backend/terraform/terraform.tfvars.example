@@ -1,0 +1,19 @@
+# AWS Region & Environment
+aws_region  = "us-east-1"
+environment = "production"
+app_name    = "chessbox-notification"
+
+# Lambda Architecture: arm64 (Graviton, recommended) or x86_64
+lambda_architecture = "arm64"
+
+# External Database Provider Connection URL
+# Compatible with Neon, Supabase, CockroachDB, Railway, AWS Aurora Serverless, etc.
+# Example for Neon: "postgres://user:password@ep-sample-12345.us-east-1.aws.neon.tech/neondb?sslmode=require"
+# Example for Supabase: "postgres://postgres:password@db.xxxx.supabase.co:5432/postgres?sslmode=require"
+database_url = "postgres://username:password@external-db-host:5432/dbname?sslmode=require"
+
+# Argon2 Salt / Secret Key (leave empty to generate securely via Terraform)
+# app_secret = "your-custom-app-secret-key"
+
+# Scraper Schedule (Cron or Rate expression)
+worker_schedule = "rate(1 minute)"

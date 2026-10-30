@@ -1,7 +1,7 @@
 package subscription
 
 import (
-	"chess-notify/internal/tournament"
+	"chessbox-notification/internal/tournament"
 	"context"
 	"database/sql"
 	"errors"

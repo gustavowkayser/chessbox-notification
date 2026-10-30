@@ -1,7 +1,7 @@
 package device
 
 import (
-	"chess-notify/internal/middleware"
+	"chessbox-notification/internal/middleware"
 	"context"
 	"crypto/sha256"
 	"encoding/base64"

@@ -1,7 +1,7 @@
 package tournament
 
 import (
-	"chess-notify/internal/notification"
+	"chessbox-notification/internal/notification"
 	"context"
 	"errors"
 	"log"
@@ -44,7 +44,9 @@ func (s *Service) Refresh(
 	tournaments, err := s.repository.GetAllActive(ctx)
 
 	if err != nil {
-		log.Fatalf("Error occured on refresh job: %s\n", err.Error())
+		log.Printf("Error occurred on refresh job: %s\n", err.Error())
+		close(jobs)
+		wg.Wait()
 		return
 	}
 

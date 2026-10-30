@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"chess-notify/internal/utils"
+	"chessbox-notification/internal/utils"
 	"context"
 	"net/http"
 	"strings"

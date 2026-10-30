@@ -25,7 +25,11 @@ func (j *Job) Init() {
 		)
 
 		if err != nil {
-			log.Printf("Error occured when pushing notification: %s\n", err.Error())
+			log.Printf("Error occurred when pushing notification: %s\n", err.Error())
 		}
 	}
+}
+
+func (j *Job) Send(ctx context.Context, tournamentID string) error {
+	return j.service.SendNotification(ctx, tournamentID)
 }
