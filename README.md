@@ -1,4 +1,4 @@
-# ♟️ Chess Notify
+# ♟️ ChessBox Notification
 
 [![Go Version](https://img.shields.io/badge/Go-1.26+-00ADD8?style=flat&logo=go)](https://go.dev)
 [![React Native](https://img.shields.io/badge/React_Native-0.86-61DAFB?style=flat&logo=react)](https://reactnative.dev)
@@ -6,7 +6,7 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16+-336791?style=flat&logo=postgresql)](https://www.postgresql.org)
 [![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-v4-06B6D4?style=flat&logo=tailwindcss)](https://tailwindcss.com)
 
-**Chess Notify** is a real-time tournament tracking and notification ecosystem for competitive chess players, arbiters, coaches, and spectators.
+**ChessBox Notification** is a real-time tournament tracking and notification ecosystem for competitive chess players, arbiters, coaches, and spectators.
 
 Tournaments hosted on [chess-results.com](https://chess-results.com) publish round pairings, board assignments, and results at irregular intervals between rounds. Players are often stuck manually refreshing browser pages on their phones to find out who they are playing, what color pieces they have, and which board to sit at.
 
